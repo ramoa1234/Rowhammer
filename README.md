@@ -3,10 +3,11 @@
 My attempt at a row hammer attack
 
 TODO
-learn how to read memory row(read and write)
+Understand RAM read and write
+Read and write techniques
 
-Ctypes?
-
+refernce(POC)
+https://github.com/google/rowhammer-test/blob/master/double_sided_rowhammer.cc#L246
 
 NOTES
 
