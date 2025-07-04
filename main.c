@@ -1,36 +1,45 @@
 #include <stdio.h>
 #include <string.h>
+#include <sys/sysinfo.h>
 
-void hammer(char x, char y, char w) {
-    //repeadtly read and write into x and w(physical memory avoiding cache) 
-    char new_x = '1';
-    memcpy(&x, &new_x, sizeof(char));
-    printf("New value of x = %c", new_x);
+
+
+
+
+//calculate memory sizes
+//break the memory down into chuncks(page maps) and fill thme
+
+
+//pread the bytes from the page desciptor(collection of pages maps) at a offset(pagination)
+
+
+
+uint64_t GetPhysicalMemorySize() {
+  struct sysinfo info;
+  sysinfo( &info );
+  return (size_t)info.totalram * (size_t)info.mem_unit;
 }
 
 
-void row_hammer(x, y, w) { 
+void create_memory_map() {
+    int mapping_size = 1024*256;
 
-    for(int i = 0;i < 1000;i++) {
-        hammer(x, y, w);
+    *mapping_size = 
+    static_cast<uint64_t>((static_cast<double>(GetPhysicalMemorySize()) * 
+          fraction_of_physical_memory));
 
-    }
+
 
 }
+
 
 
 int main() {
-    char x = '1';
-    char y = '2';
-    char w = '3';
+      
     
-    printf("%p\n", &x);
-    printf("%p\n", &y);
-    printf("%p\n", &w);
-    
+
     //goal is to rewrite or read the value at y
 
-    hammer(x, y, w);
 
     return 0;
 }
